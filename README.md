@@ -58,12 +58,20 @@ The installer will:
 - Copy the script to your Documents folder
 - Add it to Windows Startup
 
-### Option 2: Manual
+### Option 2: Manual (Windows)
 
 1. Install [AutoHotkey v2](https://www.autohotkey.com/)
 2. Download `LayoutSwitch.ahk`
 3. Double-click to run
 4. (Optional) Copy to `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\` for auto-start
+
+### macOS Installation
+
+1. Install [Hammerspoon](https://www.hammerspoon.org/) (or `brew install --cask hammerspoon`)
+2. Download the `mac/` folder
+3. Run `bash install.sh`
+4. Grant Accessibility permissions: System Settings → Privacy → Accessibility → Hammerspoon ✅
+5. Done — F8 works!
 
 ## How It Works
 
@@ -78,15 +86,15 @@ No AI, no internet, no API calls. Pure local character mapping.
 
 ## Uninstall
 
-Delete this file:
-```
-%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LayoutSwitch.ahk
-```
+**Windows:** Delete `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LayoutSwitch.ahk`
+
+**macOS:** Delete `~/.hammerspoon/layout-switch.lua` and remove the `dofile` line from `~/.hammerspoon/init.lua`
 
 ## Requirements
 
-- Windows 10/11
-- AutoHotkey v2 (auto-installed by the installer)
+**Windows:** Windows 10/11 + AutoHotkey v2 (auto-installed)
+
+**macOS:** macOS 10.15+ + [Hammerspoon](https://www.hammerspoon.org/) (free, open source)
 
 ## Why Not Just Use...
 

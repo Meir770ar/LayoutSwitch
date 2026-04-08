@@ -32,20 +32,21 @@ $F8:: {
     clipSave := ClipboardAll()
     A_Clipboard := ""
 
-    ; העתק מסומן — ניסיון כפול למקרה שתוכנה איטית
+    ; העתק מסומן — 3 ניסיונות עם ClipWait
     Send("^c")
-    Sleep(500)
-
-    if (A_Clipboard = "") {
+    if ClipWait(2) {
+        ; הצלחה
+    } else {
         ; ניסיון שני
-        Send("^{Insert}")
-        Sleep(500)
-    }
-
-    if (A_Clipboard = "") {
-        MsgBox("לא נבחר טקסט! סמן טקסט לפני לחיצה.")
-        A_Clipboard := clipSave
-        return
+        Sleep(200)
+        Send("^c")
+        if ClipWait(2) {
+            ; הצלחה
+        } else {
+            MsgBox("לא נבחר טקסט! סמן טקסט לפני לחיצה.")
+            A_Clipboard := clipSave
+            return
+        }
     }
 
     text := A_Clipboard
